@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_31_214524) do
+ActiveRecord::Schema.define(version: 2021_12_31_225607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,24 +23,24 @@ ActiveRecord::Schema.define(version: 2021_12_31_214524) do
   end
 
   create_table "bullets", force: :cascade do |t|
-    t.bigint "parent_id"
     t.bigint "collection_id"
     t.bigint "pointer_id"
     t.text "body"
     t.integer "state"
-    t.date "date"
-    t.integer "type"
+    t.integer "bullet_type"
     t.boolean "priority"
     t.boolean "inspiration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_bullets_on_ancestry"
     t.index ["collection_id"], name: "index_bullets_on_collection_id"
-    t.index ["parent_id"], name: "index_bullets_on_parent_id"
     t.index ["pointer_id"], name: "index_bullets_on_pointer_id"
   end
 
   create_table "collections", force: :cascade do |t|
-    t.integer "type"
+    t.integer "collection_type"
+    t.date "start_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 2021_12_31_214524) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "bullets", "bullets", column: "parent_id"
   add_foreign_key "bullets", "bullets", column: "pointer_id"
   add_foreign_key "migrations", "bullets", column: "from_id"
   add_foreign_key "migrations", "bullets", column: "to_id"

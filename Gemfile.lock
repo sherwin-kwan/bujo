@@ -60,6 +60,8 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    ancestry (4.1.0)
+      activerecord (>= 5.2.6)
     bootsnap (1.9.3)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -81,6 +83,7 @@ GEM
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
+    jb (0.8.0)
     loofah (2.13.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -147,6 +150,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.3)
+    spring (4.0.0)
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -159,13 +163,16 @@ PLATFORMS
   x86_64-darwin-19
 
 DEPENDENCIES
+  ancestry
   bootsnap
   debug
   dotenv-rails
+  jb
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.0)
   rspec-rails
+  spring
   tzinfo-data
 
 RUBY VERSION

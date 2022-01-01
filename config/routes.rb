@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :collections, :defaults => { :format => 'json' }
+  resources :bullets, :defaults => {:format => 'json'}
+
 end

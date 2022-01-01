@@ -1,0 +1,12 @@
+data = @collections.map do |collection|
+  {
+    "message": "Hello world",
+    "collectionType": collection.collection_type,
+    "startDate": collection.start_date
+  }
+end
+
+{
+  count: data.count,
+  data: data
+}
